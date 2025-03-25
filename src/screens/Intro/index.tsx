@@ -11,8 +11,8 @@ import {
 
 export default function Intro() {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor={"#150230"} />
+    <View style={styles.container}>
+   
       <Text style={styles.bankName}>Your Bank</Text>
       <Image
         source={require("../../../assets/cartao.png")}
@@ -21,7 +21,6 @@ export default function Intro() {
 
       <View>
         <Text style={styles.title}>
-          {" "}
           Um mundo financeiro sem complexidades!
         </Text>
 
@@ -29,7 +28,7 @@ export default function Intro() {
           <Text style={styles.buttonText}>Começar</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
