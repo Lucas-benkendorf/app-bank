@@ -9,7 +9,12 @@ import {
   StatusBar,
 } from "react-native";
 
-export default function Intro() {
+export default function Intro({navigation}: any) {
+
+  function handleNavigateToLogin() {
+    navigation.navigate("Login")
+  }
+
   return (
     <View style={styles.container}>
    
@@ -24,7 +29,7 @@ export default function Intro() {
           Um mundo financeiro sem complexidades!
         </Text>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={handleNavigateToLogin} style={styles.button}>
           <Text style={styles.buttonText}>Começar</Text>
         </TouchableOpacity>
       </View>
