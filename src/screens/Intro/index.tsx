@@ -9,13 +9,13 @@ import {
   StatusBar,
 } from "react-native";
 
-export default function App() {
+export default function Intro() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor={"#150230"} />
       <Text style={styles.bankName}>Your Bank</Text>
       <Image
-        source={require("./assets/cartao.png")}
+        source={require("../../../assets/cartao.png")}
         style={styles.bankLogo}
       />
 
