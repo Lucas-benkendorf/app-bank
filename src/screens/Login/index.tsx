@@ -1,22 +1,53 @@
-import {Text, TextInput, View, StyleSheet,TouchableOpacity } from "react-native";
+import axios from "axios";
+import { useState } from "react";
+import {Text, TextInput, View, StyleSheet,TouchableOpacity, Alert } from "react-native";
 
 
 export default function Login({navigation}: any) {
+
+const [cpf,setCpf] = useState("")
+const [password, setPassword] = useState("")
+
     function handleNavigateToCreateAccount(){
         navigation.navigate("CreateAccount")
     }
+
+
+        function handleLogin(){
+            if(!cpf || !password){
+                Alert.alert("Aviso", "Preencha todos os campos!")
+            } else {
+                axios.post("http://192.168.3.5:3000/login", {
+                    cpf:cpf,
+                    password:password,
+                }
+            )
+            .then((response)=>{
+                const token = response.data.token
+                Alert.alert("Sucesso", "Login realizado com sucesso!")
+                navigation.navigate("Home")
+            }).catch(()=>{
+                Alert.alert("Erro", "Credencias incorretas!")
+            })
+        }
+    }
+        // function handleChangeCpf(value: string){
+        //     const parseCpf = value.replace(/\D/g,'')
+        //     setCpf(parseCpf)
+        // }
+
     return(
 <View style={styles.container}> 
     
     <View style={styles.viewLogin}>
-    <TextInput style={styles.input}  placeholder="CPF" keyboardType="number-pad"/>
-    <TextInput style={styles.input}  placeholder="Password" keyboardType="number-pad" secureTextEntry/>
+    <TextInput style={styles.input}  placeholder="CPF" keyboardType="number-pad" value={cpf} onChangeText={setCpf}/>
+    <TextInput style={styles.input}  placeholder="Password" keyboardType="number-pad" secureTextEntry value={password} onChangeText={setPassword}/>
     <TouchableOpacity>
     <Text style={styles.linkText}>Esqueceu sua senha ?</Text>
     </TouchableOpacity>
     </View>
 
-    <TouchableOpacity style={styles.buttonLogin}>
+    <TouchableOpacity onPress={handleLogin} style={styles.buttonLogin}>
         <Text>Entrar</Text>
     </TouchableOpacity>
 
