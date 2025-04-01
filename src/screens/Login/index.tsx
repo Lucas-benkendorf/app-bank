@@ -40,7 +40,7 @@ const [password, setPassword] = useState("")
 <View style={styles.container}> 
     
     <View style={styles.viewLogin}>
-    <TextInput style={styles.input}  placeholder="CPF" keyboardType="number-pad" value={cpf} onChangeText={setCpf}/>
+    <TextInput style={styles.input}  placeholder="CPF" keyboardType="number-pad" value={cpf} onChangeText={setCpf} maxLength={14}/>
     <TextInput style={styles.input}  placeholder="Password" keyboardType="number-pad" secureTextEntry value={password} onChangeText={setPassword}/>
     <TouchableOpacity>
     <Text style={styles.linkText}>Esqueceu sua senha ?</Text>

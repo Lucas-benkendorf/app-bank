@@ -12,6 +12,7 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 
 import axios from "axios";
+import Login from "../Login";
 
 export default function CreateAccount({navigation}: any) {
   const [name, setName] = useState("");
@@ -19,6 +20,11 @@ export default function CreateAccount({navigation}: any) {
   const [cpf, setCpf] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+
+  function handleChangeCpf(value:string) {
+    
+  }
 
   const handleCreateAccount = async () => {
     try {
@@ -95,6 +101,7 @@ export default function CreateAccount({navigation}: any) {
             keyboardType="number-pad"
             value={cpf}
             onChangeText={setCpf}
+            maxLength={14}
           />
 
           <TextInput
